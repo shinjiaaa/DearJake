@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#151719" />
+    <meta
+      name="description"
+      content="텍스트 심리 미스터리 비주얼 노벨, Dear Jake"
+    />
+    <title>Dear Jake</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="app" class="app" data-tone="ward">
+      <section
+        id="title-screen"
+        class="title-screen"
+        aria-labelledby="game-title"
+      >
+        <div class="title-copy">
+          <h1 id="game-title">DEAR JAKE</h1>
+        </div>
+
+        <div class="title-actions">
+          <button
+            id="continue-game"
+            class="primary-button"
+            type="button"
+            hidden
+          >
+            이어하기
+          </button>
+          <button id="new-game" class="secondary-button" type="button">
+            처음부터
+          </button>
+        </div>
+      </section>
+
+      <section
+        id="game-screen"
+        class="game-screen"
+        aria-label="게임 화면"
+        hidden
+      >
+        <header class="game-header">
+          <div>
+            <p class="game-mark">DEAR JAKE</p>
+            <p id="chapter-label" class="chapter-label">프롤로그</p>
+          </div>
+          <nav class="header-actions" aria-label="게임 메뉴">
+            <button id="open-log" class="text-button" type="button">
+              기록
+            </button>
+            <button id="open-settings" class="text-button" type="button">
+              설정
+            </button>
+          </nav>
+        </header>
+
+        <section id="scene" class="scene" aria-live="off">
+          <div class="scene-lines" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div id="scene-card" class="scene-card" hidden>
+            <p id="scene-card-label" class="scene-card-label"></p>
+            <p id="scene-card-text" class="scene-card-text"></p>
+          </div>
+        </section>
+
+        <section id="dialogue-region" class="dialogue-region" aria-label="대화">
+          <div id="choices" class="choices" aria-label="선택지" hidden></div>
+          <button
+            id="dialogue-box"
+            class="dialogue-box"
+            type="button"
+            aria-label="다음 대사"
+          >
+            <span id="speaker" class="speaker"></span>
+            <span id="dialogue" class="dialogue"></span>
+            <span
+              id="continue-indicator"
+              class="continue-indicator"
+              aria-hidden="true"
+            ></span>
+          </button>
+        </section>
+
+        <div id="progress-track" class="progress-track" aria-hidden="true">
+          <span id="progress-bar"></span>
+        </div>
+      </section>
+
+      <aside
+        id="log-panel"
+        class="side-panel"
+        aria-labelledby="log-title"
+        hidden
+      >
+        <div class="panel-header">
+          <div>
+            <p class="panel-kicker">TRANSCRIPT</p>
+            <h2 id="log-title">기록</h2>
+          </div>
+          <button
+            class="close-button"
+            type="button"
+            data-close-panel
+            aria-label="기록 닫기"
+          >
+            ×
+          </button>
+        </div>
+        <div id="log-list" class="log-list"></div>
+      </aside>
+
+      <aside
+        id="settings-panel"
+        class="side-panel"
+        aria-labelledby="settings-title"
+        hidden
+      >
+        <div class="panel-header">
+          <div>
+            <p class="panel-kicker">OPTIONS</p>
+            <h2 id="settings-title">설정</h2>
+          </div>
+          <button
+            class="close-button"
+            type="button"
+            data-close-panel
+            aria-label="설정 닫기"
+          >
+            ×
+          </button>
+        </div>
+        <div class="settings-list">
+          <label class="setting-row" for="text-speed">
+            <span>글자 속도</span>
+            <select id="text-speed">
+              <option value="36">느리게</option>
+              <option value="22">보통</option>
+              <option value="10">빠르게</option>
+              <option value="0">즉시</option>
+            </select>
+          </label>
+          <label class="setting-row" for="auto-play">
+            <span>자동 진행</span>
+            <input id="auto-play" type="checkbox" />
+          </label>
+          <button id="fullscreen" class="panel-button" type="button">
+            전체 화면
+          </button>
+          <button id="restart" class="panel-button danger" type="button">
+            처음부터 시작
+          </button>
+          <button id="back-to-title" class="panel-button" type="button">
+            타이틀로
+          </button>
+        </div>
+      </aside>
+
+      <div id="scrim" class="scrim" hidden></div>
+
+      <div
+        id="restart-dialog"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="restart-title"
+        hidden
+      >
+        <p class="panel-kicker">RESTART</p>
+        <h2 id="restart-title">처음부터 시작할까요?</h2>
+        <p>현재 진행 기록은 지워집니다.</p>
+        <div class="modal-actions">
+          <button id="cancel-restart" class="secondary-button" type="button">
+            취소
+          </button>
+          <button id="confirm-restart" class="primary-button" type="button">
+            시작
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>
